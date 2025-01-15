@@ -24,3 +24,9 @@ EITHER
 Other options:
 - predict ideal time
 - predict ideal location
+
+https://www.timeanddate.com/weather/uk/st-andrews/historic?month=12&year=2024
+Temperature, weather, wind, humidity, air pressure (every hour)
+
+https://www.wunderground.com/history/daily/EGPN/date/2024-12-12
+Temperature, dew point, humidity, wind, wind speed, pressure, precipitation (every 30 minutes)
