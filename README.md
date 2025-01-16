@@ -30,3 +30,6 @@ Temperature, weather, wind, humidity, air pressure (every hour)
 
 https://www.wunderground.com/history/daily/EGPN/date/2024-12-12
 Temperature, dew point, humidity, wind, wind speed, pressure, precipitation (every 30 minutes)
+
+https://www.visualcrossing.com/weather/weather-data-services
+alot more but every hour
