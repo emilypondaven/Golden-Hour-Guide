@@ -33,3 +33,6 @@ Temperature, dew point, humidity, wind, wind speed, pressure, precipitation (eve
 
 https://www.visualcrossing.com/weather/weather-data-services
 alot more but every hour
+
+https://www.timeanddate.com/sun/uk/st-andrews?month=11&year=2023
+get sunrise times
