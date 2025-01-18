@@ -36,3 +36,6 @@ alot more but every hour
 
 https://www.timeanddate.com/sun/uk/st-andrews?month=11&year=2023
 get sunrise times
+
+MOST DATA:
+https://open-meteo.com/en/docs/historical-weather-api#latitude=56.3329&longitude=-2.7795&start_date=2023-11-21&end_date=2023-11-21&hourly=temperature_2m,relative_humidity_2m,dew_point_2m,precipitation,cloud_cover,cloud_cover_low,cloud_cover_mid,cloud_cover_high&daily=sunrise&timezone=Europe%2FLondon&models=
