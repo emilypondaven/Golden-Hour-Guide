@@ -9,11 +9,13 @@ from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import joblib
+from sklearn.model_selection import RandomizedSearchCV
+from scipy.stats import randint
 import matplotlib.pyplot as plt
 
 filepath = 'ml_model/sunrise_data.csv'
-features = ['temperature', 'humidity', 'dew_point', 'precipitation', 'cloud_cover', 'low', 'medium', 'high', 'minutes_to_official_sunrise']
-final = 'rating_overall'
+features = ['low']
+final = 'overall_rating'
 
 ## Step 2: Load and Inspect Data
 def load_data(filepath):
@@ -49,17 +51,20 @@ def train_linear_regression(X_train, y_train):
     model.fit(X_train, y_train)
     return model
 
-def train_random_forest(X_train, y_train, param_grid=None):
-    """Trains a Random Forest Regressor with optional hyperparameter tuning."""
-    if param_grid:
-        grid_search = GridSearchCV(RandomForestRegressor(), param_grid, cv=5)
-        grid_search.fit(X_train, y_train)
-        print("Best Parameters:", grid_search.best_params_)
-        return grid_search.best_estimator_
-    else:
-        model = RandomForestRegressor(n_estimators=100, random_state=42)
-        model.fit(X_train, y_train)
-        return model
+def tune_random_forest(X_train, y_train):
+    """Tunes Random Forest hyperparameters using RandomizedSearchCV."""
+    param_distributions = {
+        'n_estimators': randint(50, 300),
+        'max_depth': [None, 10, 20, 30],
+        'min_samples_split': randint(2, 15),
+        'min_samples_leaf': randint(1, 10)
+    }
+    rf = RandomForestRegressor(random_state=42)
+    rand_search = RandomizedSearchCV(rf, param_distributions, n_iter=50, cv=5, scoring='r2', random_state=42, n_jobs=-1)
+    rand_search.fit(X_train, y_train)
+    print("Best Parameters:", rand_search.best_params_)
+    return rand_search.best_estimator_
+
 
 ## Step 6: Evaluate Models
 def evaluate_model(model, X_test, y_test):
@@ -105,12 +110,7 @@ def main():
     lr_model = train_linear_regression(X_train, y_train)
 
     print("Training Random Forest...")
-    param_grid = {
-        'n_estimators': [50, 100, 200],
-        'max_depth': [None, 10, 20],
-        'min_samples_split': [2, 5, 10]
-    }
-    rf_model = train_random_forest(X_train, y_train, param_grid)
+    rf_model = tune_random_forest(X_train, y_train)
 
     # Evaluate models
     print("\nEvaluating Linear Regression:")
