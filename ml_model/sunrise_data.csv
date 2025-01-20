@@ -1,4 +1,4 @@
-Date,Time,Rating: Overall,Temperature,Humidity,Dew point,Precipitation,Cloud cover,Low,Medium,High ,Minutes to Sunrise Time,Rating: High cloud color (0.7),Rating: Low cloud color (0.3),Rating: Overall
+Date,Time,overall_rating,temperature,humidity,dew_point,precipitation,cloud_cover,low,medium,high,minutes_to_official_sunrise,Rating: High cloud color (0.7),Rating: Low cloud color (0.3),Rating: Overall
 12/12/2024,08:19,8.5,-1,93,3,0,24,20,7,0,-17,10,5,8.5
 12/12/2024,07:55,4.1,-1.2,88,-2.9,0,24,20,7,0,-41,2,9,4.1
 12/12/2024,07:44,5.9,-1,86,-3,0,24,20,7,0,-52,5,8,5.9
