@@ -14,8 +14,9 @@ from scipy.stats import randint
 import matplotlib.pyplot as plt
 
 filepath = 'ml_model/sunrise_data.csv'
-features = ['low']
-final = 'overall_rating'
+# features = ['low', 'medium', 'high', 'minutes_to_official_sunrise']
+features = ['humidity', 'dew_point','low', 'minutes_to_official_sunrise']
+final = 'rating_low_color'
 
 ## Step 2: Load and Inspect Data
 def load_data(filepath):
@@ -36,6 +37,8 @@ def preprocess_data(df):
     # Scale features
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(x)
+    
+    print(X_scaled)
 
     return X_scaled, y
 
