@@ -11,7 +11,9 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import joblib
 import matplotlib.pyplot as plt
 
-features = ['low', 'medium', 'minutes_to_official_sunrise']
+filepath = 'ml_model/sunrise_data.csv'
+features = ['temperature', 'humidity', 'dew_point', 'precipitation', 'cloud_cover', 'low', 'medium', 'high', 'minutes_to_official_sunrise']
+final = 'rating_overall'
 
 ## Step 2: Load and Inspect Data
 def load_data(filepath):
@@ -27,13 +29,13 @@ def preprocess_data(df):
 
     # Split features and target
     x = df[features]
-    y = df['overall_rating']
+    y = df[final]
 
     # Scale features
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(x)
 
-    return X_scaled, y, scaler
+    return X_scaled, y
 
 ## Step 4: Train-Test Split
 def split_data(X, y, test_size=0.2, random_state=42):
@@ -90,12 +92,10 @@ def load_model(filepath):
 
 ## Step 9: Main Pipeline
 def main():
-    # Filepath and target column
-    filepath = 'ml_model/sunrise_data.csv'
 
     # Load and preprocess data
     df = load_data(filepath)
-    X, y, scaler = preprocess_data(df)
+    X, y = preprocess_data(df)
 
     # Split data
     X_train, X_test, y_train, y_test = split_data(X, y)
