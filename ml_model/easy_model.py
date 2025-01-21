@@ -14,9 +14,9 @@ from scipy.stats import randint
 import matplotlib.pyplot as plt
 
 filepath = 'ml_model/sunrise_data.csv'
-# features = ['low', 'medium', 'high', 'minutes_to_official_sunrise']
-features = ['humidity', 'dew_point','low', 'minutes_to_official_sunrise']
-final = 'rating_low_color'
+features = ['humidity', 'low', 'medium', 'high', 'minutes_to_official_sunrise']
+#features = ['humidity', 'dew_point','low', 'minutes_to_official_sunrise']
+final = 'rating_binary'
 
 ## Step 2: Load and Inspect Data
 def load_data(filepath):
