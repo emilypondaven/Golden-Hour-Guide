@@ -33,6 +33,9 @@ def preprocess_data(df):
     y = df[final]
 
     # Scale features
+    # Need to change specific features to be scaled
+    # Percentages need to be changed to max and min
+    # Then others should use standard scaler
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(x)
     
